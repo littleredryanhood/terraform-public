@@ -1,6 +1,4 @@
-module "digitalocean_domain" {
-  source      = "./modules"
-  for_each    = toset(local.domains)
-  domain_name = each.value
+resource "digitalocean_domain" "default" {
+  for_each = toset(local.domains)
+  name     = each.key
 }
-
